@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { sanityClient, urlFor } from '../../sanity';
 import { useAddress, useDisconnect, useMetamask } from "@thirdweb-dev/react";
 import { Collection } from '../../typing';
-import { GetServerSideProps, getServerSidePropsContext } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import {useRouter} from 'next/router'
 
 interface Props {
@@ -60,7 +60,7 @@ const NFTDropPage = ({ collection }: Props) => {
 
 export default NFTDropPage
 
-export const getServerSideProps:GetServerSideProps = async ({ params }:getServerSidePropsContext) => {
+export const getServerSideProps:GetServerSideProps = async ({ params }:GetServerSidePropsContext) => {
     const query = `*[_type == "collection" &&  slug.current == $id] [0] {
         _id,
         title,
