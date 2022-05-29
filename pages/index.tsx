@@ -26,7 +26,7 @@ const Home = ({ collections }: Props) => {
               <div className='flex items-center flex-col space-y-2 text-center cursor-pointer hover:scale-105 transition-all duration-205' onClick={() => {
                 router.push(`/nft/${data.slug.current}`)
               }}>
-                <img src={urlFor(data.mainImage)} alt='mainImage' className='h-96 w-60 rounded-2xl object-cover'/>
+                <img src={urlFor(data.mainImage).url()} alt='mainImage' className='h-96 w-60 rounded-2xl object-cover'/>
                 <h1 className='text-white font-bold text-2xl'>{data.title}</h1>
                 <p className='text-gray-400 mt-2 px-5'>{data.description}</p>
                 
