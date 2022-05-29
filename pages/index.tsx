@@ -1,6 +1,5 @@
 import type { GetServerSideProps } from 'next'
 import { sanityClient,urlFor } from '../sanity'
-import Link from 'next/Link'
 import Head from 'next/head'
 import { Collection } from '../typing'
 import {useRouter} from 'next/router'
