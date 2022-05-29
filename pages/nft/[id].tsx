@@ -60,7 +60,7 @@ const NFTDropPage = ({ collection }: Props) => {
 
 export default NFTDropPage
 
-export const getServerSideProps:GetServerSideProps = async ({ params }:GetServerSidePropsContext) => {
+export const getServerSideProps:GetServerSideProps = async ({params}) => {
     const query = `*[_type == "collection" &&  slug.current == $id] [0] {
         _id,
         title,
@@ -87,7 +87,7 @@ export const getServerSideProps:GetServerSideProps = async ({ params }:GetServer
 
     }`
     const Collections = await sanityClient.fetch(query, {
-        id: params.id
+        id: params?.id
     })
     if (!Collections) {
         return {
