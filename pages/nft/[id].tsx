@@ -1,15 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { sanityClient, urlFor } from '../../sanity';
 import { useAddress, useDisconnect, useMetamask } from "@thirdweb-dev/react";
 import { Collection } from '../../typing';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, getServerSidePropsContext } from 'next';
 import {useRouter} from 'next/router'
 
 interface Props {
     collection: Collection
   }
 
-const NFTDropPage = ({collection}: Props) => {
+const NFTDropPage = ({ collection }: Props) => {
+    const [claimedSupply, setClaimedSupply] = useState() 
     // auth
     const connectWithMetamask = useMetamask()
     const address = useAddress()
@@ -59,7 +60,7 @@ const NFTDropPage = ({collection}: Props) => {
 
 export default NFTDropPage
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps:GetServerSideProps = async ({ params }:getServerSidePropsContext) => {
     const query = `*[_type == "collection" &&  slug.current == $id] [0] {
         _id,
         title,
