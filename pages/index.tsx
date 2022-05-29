@@ -2,7 +2,7 @@ import type { GetServerSideProps } from 'next'
 import { sanityClient,urlFor } from '../sanity'
 import Head from 'next/head'
 import { Collection } from '../typing'
-import {useRouter} from 'next/router'
+import {useRouter} from 'next/router' 
 
 interface Props {
   collections: Collection[]
@@ -12,7 +12,7 @@ const Home = ({ collections }: Props) => {
   const router = useRouter()
 
   return (
-    <div className='bg-gradient-to-t from-[#434343] to-[#000000] min-h-screen h-full flex  items-center flex-col p-6 md:p-12'>
+    <div className='bg-gradient-to-t from-[#434343] to-[#000000] min-h-screen h-full flex  items-center flex-col p-6 md:p-12' >
       <Head>
         <title>NFT DROP!</title>
         <link rel="icon" href="/favicon.ico" />
@@ -41,7 +41,7 @@ const Home = ({ collections }: Props) => {
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const query = `*[_type == "collection"]`
   const Collections = await sanityClient.fetch(query)
   return {
